@@ -10,3 +10,12 @@ export async function load(filename = USERS_FILE) {
     return [];
   }
 }
+
+export async function save(data, filename = USERS_FILE) {
+  try {
+    const dataString = JSON.stringify(data, null, 2);
+    await fs.writeFile(filename, dataString, "utf-8");
+  } catch (err) {
+    console.log(err.message);
+  }
+}
