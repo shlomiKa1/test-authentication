@@ -16,4 +16,8 @@ async function loginRoute(req, res) {
   res.status(201).send({ message: "user login successfully", token });
 }
 
-export { signupRoute, loginRoute };
+function currentUser(req, res) {
+  res.send({ user: req.user });
+}
+
+export { signupRoute, loginRoute, currentUser };
