@@ -2,7 +2,14 @@
 
 ## איך להריץ:
 
+העתקת קובץ env
+מכיל
+
 ```bash
+PORT=
+
+SECRET=
+EXPIRE=
 cp backend/example.env backend/.env
 ```
 
