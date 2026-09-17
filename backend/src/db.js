@@ -1,7 +1,13 @@
 import fs from "fs/promises";
-import { USERS_FILE } from "./config";
+import path from "path";
+import { USERS_FILE } from "./config.js";
 
 export async function load(filename = USERS_FILE) {
+  //   if (!fs.(filename)) {
+  //     await fs.appendFile(filename, "[]", "utf-8");
+  //     return [];
+  //   }
+
   try {
     const data = await fs.readFile(filename, "utf-8");
     return JSON.parse(data);

@@ -1,4 +1,4 @@
-import { load, save } from "../db";
+import { load, save } from "../db.js";
 
 async function getAll() {
   return await load();

@@ -1,32 +1,33 @@
-import { UserSignup, UserLogin } from "../schema/user";
 import jwt from "jsonwebtoken";
 import bcrypto from "bcryptjs";
-import { addUser, findByEmail, findById, getAll } from "../repositories/users";
-import { EXPIRE, SECRET } from "../config";
+import { UserSignup, UserLogin } from "../schema/user.js";
+import { addUser, findByEmail, getAll } from "../repositories/users.js";
+import { EXPIRE, SECRET } from "../config.js";
 
-async function signup(user) {
-  const parsed = UserSignup.safeParse(user);
+async function signup(body) {
+  const parsed = UserSignup.safeParse(body);
   if (!parsed.success) {
-    throw Object.assign(new Error(parsed.error.issues), { status: 422 });
+    throw Object.assign(new Error(parsed.error.message), { status: 422 });
   }
 
   const { username, email, password } = parsed.data;
   const users = await getAll();
-  const user = await findByEmail(email);
+  const user = users.find((u) => u.email === email);
+
   if (user) {
     throw Object.assign(new Error("Email not avalible"), { statous: 409 });
   }
 
   const passwordHash = await bcrypto.hash(password, 12);
 
-  const id = users.length > 0 ? Math.max(...users.map((u) => u.id)) + 1 : 1;
-  const user = { id, username, email, password: passwordHash };
-  const saveUser = await addUser({ user });
+  const id = users.length > 0 ? Math.max(users.map((u) => u.id)) + 1 : 1;
+  const newUser = { id, username, email, password: passwordHash };
+  const saveUser = await addUser(newUser);
   return saveUser;
 }
 
-async function login(user) {
-  const parsed = UserLogin.safeParse(user);
+async function login(body) {
+  const parsed = UserLogin.safeParse(body);
   if (!parsed.success) {
     throw Object.assign(new Error(parsed.error.issues), { status: 422 });
   }

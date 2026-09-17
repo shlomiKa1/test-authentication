@@ -1,4 +1,4 @@
-import { login, signup } from "../services/users.service";
+import { login, signup } from "../services/users.service.js";
 
 async function signupRoute(req, res) {
   const signed = await signup(req.body);
