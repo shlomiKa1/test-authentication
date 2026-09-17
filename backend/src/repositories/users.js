@@ -10,4 +10,11 @@ async function findById(email) {
   return found;
 }
 
-export { getAll, findById };
+async function addUser(user) {
+  const users = await load();
+  users.push(user);
+  await save(users);
+  return user.id;
+}
+
+export { getAll, findById, addUser};
