@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cookiePaeser());
 app.use(
   cors({
-    origin: "http://localhost:3570",
+    origin: "http://localhost:5173/",
     credentials: true,
   }),
 );
