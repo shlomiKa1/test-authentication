@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": 1,
+    "username": "momo1",
+    "email": "momo@example.com",
+    "password": "$2b$12$OYdeBb2oP8nePBrGWHuY7ejV.qhhmCOkRFjOE6NmJ2UovpinNmUva"
+  },
+  {
+    "id": 2,
+    "username": "momo1",
+    "email": "momo@example3.com",
+    "password": "$2b$12$yEkHWgpoVAFxjtPkbstNeO/jpLol2cAw5xCl5AvrmoNoK01.lvpWS"
+  }
+]
