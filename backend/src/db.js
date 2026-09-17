@@ -1,6 +1,5 @@
 import fs from "fs/promises";
 import { USERS_FILE } from "./config";
-import path from "path";
 
 export async function load(filename = USERS_FILE) {
   try {
