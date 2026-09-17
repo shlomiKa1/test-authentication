@@ -4,10 +4,10 @@ async function getAll() {
   return await load();
 }
 
-async function findById(email) {
+async function findByEmail(email) {
   const users = await load();
-  const found = users.find((u) => u.email === email);
-  return found;
+  const user = users.find((u) => u.email === email);
+  return user;
 }
 
 async function addUser(user) {
@@ -17,4 +17,4 @@ async function addUser(user) {
   return user.id;
 }
 
-export { getAll, findById, addUser};
+export { getAll, findByEmail, addUser };
