@@ -20,4 +20,9 @@ function currentUser(req, res) {
   res.send({ user: req.user });
 }
 
-export { signupRoute, loginRoute, currentUser };
+function logout(_req, res) {
+  res.clearCookie("token");
+  res.send({ message: "User logout successfully" });
+}
+
+export { signupRoute, loginRoute, currentUser, logout };
